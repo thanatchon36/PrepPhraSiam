@@ -49,6 +49,7 @@ csv_file = 'data/data.csv'
 full_df = pd.read_csv(csv_file, dtype = str)
 full_df['text_len'] = full_df['text_len'].astype(int)
 full_df = reset(full_df[full_df['text_len'] >= 800])
+full_df['Doc_Page_ID'] = full_df.index + 1
 
 total_no = len(full_df)
 
