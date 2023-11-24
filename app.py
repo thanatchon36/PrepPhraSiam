@@ -47,6 +47,7 @@ else:
 
 csv_file = 'data/data.csv'
 full_df = pd.read_csv(csv_file, dtype = str)
+full_df['text_len'] = full_df['text_len'].astype(int)
 full_df = reset(full_df[full_df['text_len'] >= 800])
 
 total_no = len(full_df)
