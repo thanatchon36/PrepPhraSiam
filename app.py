@@ -21,7 +21,7 @@ def reset(df):
     cols = df.columns
     return df.reset_index()[cols]
 
-st.set_page_config(page_title = 'PrepBard')
+st.set_page_config(page_title = 'PrepPhraSiam')
 
 st.markdown("""
     <style>
