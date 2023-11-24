@@ -58,7 +58,7 @@ file_exists = os.path.isfile(csv_file)
 if not file_exists:
     with open(csv_file, mode='a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(['Timestamp','file_name','page_no','text','generative_text'])
+        writer.writerow(['Timestamp','file_name','page_no','text','generative_text','Doc_Page_ID'])
         print(f'Create {csv_file}')
 
 if "progress_percent" not in st.session_state:
@@ -133,9 +133,9 @@ if prompt := st.chat_input(placeholder="Kindly input your cookie..."):
                         else:
                             writer = csv.writer(file)
                             timestamp = get_now()
-                            writer.writerow([timestamp, sample_instance['file_name'].values[0], sample_instance['page_no'].values[0], sample_instance['text'].values[0], output_1])
-                            writer.writerow([timestamp, sample_instance['file_name'].values[0], sample_instance['page_no'].values[0], sample_instance['text'].values[0], output_2])
-                            writer.writerow([timestamp, sample_instance['file_name'].values[0], sample_instance['page_no'].values[0], sample_instance['text'].values[0], output_3])
+                            writer.writerow([timestamp, sample_instance['file_name'].values[0], sample_instance['page_no'].values[0], sample_instance['text'].values[0], output_1, sample_instance['Doc_Page_ID'].values[0]])
+                            writer.writerow([timestamp, sample_instance['file_name'].values[0], sample_instance['page_no'].values[0], sample_instance['text'].values[0], output_2, sample_instance['Doc_Page_ID'].values[0]])
+                            writer.writerow([timestamp, sample_instance['file_name'].values[0], sample_instance['page_no'].values[0], sample_instance['text'].values[0], output_3, sample_instance['Doc_Page_ID'].values[0]])
                             temp_msg = "Record Saved ! " + str(Doc_Page_ID)
                             st.session_state.error_no = 0
                             st.chat_message("assistant").write(temp_msg + ' ' + timestamp)
